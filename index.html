@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title>Hexagram Coin Flip</title>
+    <style>
+        html, body {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #333;
+        }
+
+        #main-container {
+            margin-top: 20px;
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+        }
+
+        #coin-flip-cont {
+            width: 100%;
+            height: auto;
+            margin: 0 auto;
+            padding: 10px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .coin {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            transform-style: preserve-3d;
+            margin: 5px;
+        }
+
+        .coin .front, .coin .back {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+        }
+
+        .coin .front {
+            transform: translateZ(1px);
+            border-radius: 50%;
+            background-color: #d3d3d3;
+            border: solid 3px gray;
+        }
+
+        .coin .back {
+            transform: translateZ(-1px) rotateY(180deg);
+            border-radius: 50%;
+            background-color: #eddaaa;
+            border: solid 3px gray;
+        }
+
+        .coin.animation900 {
+            -webkit-animation: rotate900 3s linear forwards; 
+            animation: rotate900 3s linear forwards;
+        }
+
+        .coin.animation1080 {
+            -webkit-animation: rotate1080 3s linear forwards; 
+            animation: rotate1080 3s linear forwards;
+        }
+
+        .coin.animation1260 {
+            -webkit-animation: rotate1260 3s linear forwards; 
+            animation: rotate1260 3s linear forwards;
+        }
+
+        .coin.animation1440 {
+            -webkit-animation: rotate1440 3s linear forwards; 
+            animation: rotate1440 3s linear forwards;
+        }
+
+        .coin.animation1620 {
+            -webkit-animation: rotate1620 3s linear forwards; 
+            animation: rotate1620 3s linear forwards;
+        }
+
+        .coin.animation1800 {
+            -webkit-animation: rotate1800 3s linear forwards; 
+            animation: rotate1800 3s linear forwards;
+        }
+
+        .coin.animation1980 {
+            -webkit-animation: rotate1980 3s linear forwards; 
+            animation: rotate1980 3s linear forwards;
+        }
+
+        .coin.animation2160 {
+            -webkit-animation: rotate2160 3s linear forwards; 
+            animation: rotate2160 3s linear forwards;
+        }
+
+        @-webkit-keyframes rotate900 {
+            from { -webkit-transform: rotateY(0); -moz-transform: rotateY(0); transform: rotateY(0); }
+            to { -webkit-transform: rotateY(900deg); -moz-transform: rotateY(900deg); transform: rotateY(900deg); }
+        }
+
+        @keyframes rotate900 {
+            from { -webkit-transform: rotateY(0); -moz-transform: rotateY(0); transform: rotateY(0); }
+            to { -webkit-transform: rotateY(900deg); -moz-transform: rotateY(900deg); transform: rotateY(900deg); }
+        }
+
+        @-webkit-keyframes rotate1080 {
+            from { -webkit-transform: rotateY(0); -moz-transform: rotateY(0); transform: rotateY(0); }
+            to { -webkit-transform: rotateY(1080deg); -moz-transform: rotateY(1080deg); transform: rotateY(1080deg); }
+        }
+
+        @keyframes rotate1080 {
+            from { -webkit-transform: rotateY(0); -moz-transform: rotateY(0); transform: rotateY(0); }
+            to { -webkit-transform: rotateY(1080deg); -moz-transform: rotateY(1080deg); transform: rotateY(1080deg); }
+        }
+
+        @-webkit-keyframes rotate1260 {
+            from { -webkit-transform: rotateY(0); -moz-transform: rotateY(0); transform: rotateY(0); }
+            to { -webkit-transform: rotateY(1260deg); -moz-transform: rotateY(1260deg); transform: rotateY(1260deg); }
+        }
+
+        @keyframes rotate1260 {
+            from { -webkit-transform: rotateY(0); -moz-transform: rotateY(0); transform: rotateY(0); }
+            to { -webkit-transform: rotateY(1260deg); -moz-transform: rotateY(1260deg); transform: rotateY(1260deg); }
+        }
+
+        @-webkit-keyframes rotate1440 {
+            from { -webkit-transform: rotateY(0); -moz-transform: rotateY(0); transform: rotateY(0); }
+            to { -webkit-transform: rotateY(1440deg); -moz-transform: rotateY(1440deg); transform: rotateY(1440deg); }
+        }
+
+        @keyframes rotate1440 {
+            from { -webkit-transform: rotateY(0); -moz-transform: rotateY(0); transform: rotateY(0); }
+            to { -webkit-transform: rotateY(1440deg); -moz-transform: rotateY(1440deg); transform: rotateY(1440deg); }
+        }
+
+        @-webkit-keyframes rotate1620 {
+            from { -webkit-transform: rotateY(0); -moz-transform: rotateY(0); transform: rotateY(0); }
+            to { -webkit-transform: rotateY(1620deg); -moz-transform: rotateY(1620deg); transform: rotateY(1620deg); }
+        }
+
+        @keyframes rotate1620 {
+            from { -webkit-transform: rotateY(0); -moz-transform: rotateY(0); transform: rotateY(0); }
+            to { -webkit-transform: rotateY(1620deg); -moz-transform: rotateY(1620deg); transform: rotateY(1620deg); }
+        }
+
+        @-webkit-keyframes rotate1800 {
+            from { -webkit-transform: rotateY(0); -moz-transform: rotateY(0); transform: rotateY(0); }
+            to { -webkit-transform: rotateY(1800deg); -moz-transform: rotateY(1800deg); transform: rotateY(1800deg); }
+        }
+
+        @keyframes rotate1800 {
+            from { -webkit-transform: rotateY(0); -moz-transform: rotateY(0); transform: rotateY(0); }
+            to { -webkit-transform: rotateY(1800deg); -moz-transform: rotateY(1800deg); transform: rotateY(1800deg); }
+        }
+
+        @-webkit-keyframes rotate1980 {
+            from { -webkit-transform: rotateY(0); -moz-transform: rotateY(0); transform: rotateY(0); }
+            to { -webkit-transform: rotateY(1980deg); -moz-transform: rotateY(1980deg); transform: rotateY(1980deg); }
+        }
+
+        @keyframes rotate1980 {
+            from { -webkit-transform: rotateY(0); -moz-transform: rotateY(0); transform: rotateY(0); }
+            to { -webkit-transform: rotateY(1980deg); -moz-transform: rotateY(1980deg); transform: rotateY(1980deg); }
+        }
+
+        @-webkit-keyframes rotate2160 {
+            from { -webkit-transform: rotateY(0); -moz-transform: rotateY(0); transform: rotateY(0); }
+            to { -webkit-transform: rotateY(2160deg); -moz-transform: rotateY(2160deg); transform: rotateY(2160deg); }
+        }
+
+        @keyframes rotate2160 {
+            from { -webkit-transform: rotateY(0); -moz-transform: rotateY(0); transform: rotateY(0); }
+            to { -webkit-transform: rotateY(2160deg); -moz-transform: rotateY(2160deg); transform: rotateY(2160deg); }
+        }
+
+        /* 테이블 헤더 스타일 */
+        #result-log th {
+            border: 1px solid white;
+            padding: 8px;
+            background-color: #444; /* 헤더 배경 색 */
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* 테이블 데이터 셀 스타일 */
+        #result-log td {
+            border: 1px solid white;
+            padding: 8px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        #result-log td span {
+            letter-spacing: 1px; /* 각 글자 사이에 1px 간격을 추가 */
+        }
+
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            margin: 0 auto;
+            font-size: 14px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+            transform: scale(0.95);
+        }
+
+        .button:active {
+            transform: scale(0.95);
+        }
+
+        .front-text {
+            font-weight: 700 !important;
+            margin-top: 40%;
+        }
+
+        @media (max-width: 600px) {
+            .coin {
+                width: 80px; /* 모바일에서도 큼직하게 보이게 크기 조정 */
+                height: 80px;
+            }
+
+            .coin .front, .coin .back {
+                width: 80px;
+                height: 80px;
+            }
+
+            .button {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            #result-log th, #result-log td {
+                font-size: 12px;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="main-container">
+        <h2 style="color: white;">HOW TO USE</h2>
+        <p style="color: white;">1. Enter the email address where you want to receive the question and the results.</p>
+        <p style="color: white;">2. Press the flip button 6 times to see the coin flip results for your question.</p>
+        <p style="color: white;">3. Press the submit button to submit the results.</p>
+        
+        <div id="coin-flip-cont">
+            <div id="coin1" class="coin">
+                <div class="front"><p class="front-text">Tail</p></div>
+                <div class="back"><p class="front-text">Head</p></div>
+            </div>
+            <div id="coin2" class="coin">
+                <div class="front"><p class="front-text">Tail</p></div>
+                <div class="back"><p class="front-text">Head</p></div>
+            </div>
+            <div id="coin3" class="coin">
+                <div class="front"><p class="front-text">Tail</p></div>
+                <div class="back"><p class="front-text">Head</p></div>
+            </div>
+        </div>
+        <button type="button" id="flip" class="button">Flip Coins</button>
+        <input type="text" id="question" placeholder="Enter your question here" style="margin-top: 20px; padding: 10px; width: 80%;">
+        <input type="email" id="email" placeholder="Enter your email here" style="margin-top: 10px; padding: 10px; width: 80%;">
+        <table id="result-log" style="color: white; margin-top: 20px; width: 100%; margin-left: auto; margin-right: auto; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th style="border: 1px solid white; padding: 5px;">Flip #</th>
+                    <th style="border: 1px solid white; padding: 5px;">Results</th>
+                    <th style="border: 1px solid white; padding: 5px;">Line</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 결과가 여기에 추가됩니다 -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            var spinArray = ['animation900', 'animation1080', 'animation1260', 'animation1440', 'animation1620', 'animation1800', 'animation1980', 'animation2160'];
+            var flipCount = 0;
+            var maxFlips = 6;
+            var allResults = [];
+
+            function getSpin() {
+                var spin = spinArray[Math.floor(Math.random() * spinArray.length)];
+                return spin;
+            }
+
+            function getResult(spin) {
+                // 900, 1260, 1620, 1980: Head, 1080, 1440, 1800, 2160: Tail
+                var headSpins = ['animation900', 'animation1260', 'animation1620', 'animation1980'];
+                return headSpins.includes(spin) ? 'Head' : 'Tail';
+            }
+
+            function calculateResultValue(results) {
+                return results.reduce(function(total, result) {
+                    return total + (result === 'Head' ? 2 : 3);
+                }, 0);
+            }
+
+            function getLineSymbol(value) {
+                return (value === 6 || value === 8) 
+                    ? `███  ███` 
+                    : `████████`;
+            }
+
+            document.getElementById('flip').addEventListener('click', function() {
+                if (flipCount >= maxFlips) return;
+
+                var flipButton = document.getElementById('flip');
+                flipButton.disabled = true; // 버튼 비활성화
+
+                var coins = document.querySelectorAll('.coin');
+                var results = [];
+                coins.forEach(function(coin) {
+                    coin.className = 'coin';
+                    setTimeout(function() {
+                        var spin = getSpin();
+                        coin.classList.add(spin);
+                        results.push(getResult(spin));
+                        if (results.length === coins.length) {
+                            setTimeout(function() {
+                                var resultValue = calculateResultValue(results);
+                                var lineSymbol = getLineSymbol(resultValue);
+                                console.log('Flip #' + (flipCount + 1) + ': ' + results.join(', ') + ' (Value: ' + resultValue + ')'); // 결과를 console.log에 기록
+                                allResults.push('Flip #' + (flipCount + 1) + ': ' + results.join(', ') + ' (Value: ' + resultValue + ')'); // 모든 결과를 배열에 저장
+                                var resultLog = document.getElementById('result-log').getElementsByTagName('tbody')[0];
+                                var resultRow = document.createElement('tr');
+                                var flipCell = document.createElement('td');
+                                var resultCell = document.createElement('td');
+                                var lineCell = document.createElement('td');
+                                flipCell.style.border = '1px solid white';
+                                flipCell.style.padding = '5px';
+                                resultCell.style.border = '1px solid white';
+                                resultCell.style.padding = '5px';
+                                lineCell.style.border = '1px solid white';
+                                lineCell.style.padding = '5px';
+                                lineCell.style.letterSpacing = '-3px'; 
+                                lineCell.style.wordSpacing = '20px'; 
+                                flipCell.innerText = flipCount + 1;
+                                resultCell.innerText = results.join(', ') + ' (Value: ' + resultValue + ')';
+                                lineCell.innerText = lineSymbol;
+                                resultRow.appendChild(flipCell);
+                                resultRow.appendChild(resultCell);
+                                resultRow.appendChild(lineCell);
+                                resultLog.insertBefore(resultRow, resultLog.firstChild); // 최신 결과를 맨 위에 추가
+                                flipCount++;
+                                flipButton.disabled = false; // 버튼 활성화
+                                if (flipCount >= maxFlips) {
+                                    flipButton.innerText = 'submit'; // 버튼 텍스트를 'submit'으로 변경
+                                    flipButton.addEventListener('click', function() {
+                                        var email = document.getElementById('email').value;
+                                        var question = document.getElementById('question').value;
+                                        if (!email || !question) {
+                                            alert('Please enter both your email and question.'); // 경고창 띄우기
+                                            return;
+                                        }
+                                        var resultObject = {
+                                            email: email,
+                                            question: question,
+                                            results: allResults
+                                        };
+                                        console.log(resultObject); // email, question, flip result를 객체로 반환하여 console.log에 기록
+                                        flipButton.disabled = true; // 버튼 비활성화
+                                        flipButton.style.backgroundColor = 'gray'; // 버튼 색상 회색으로 변경
+                                        flipButton.style.transition = 'none'; // 애니메이션 제거
+                                    });
+                                }
+                            }, 3000); // 애니메이션이 끝난 후 결과를 표시
+                        }
+                    }, 100);
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>
